@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.unique-first-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #8e2de2, #4a00e0); /* A fresh purple gradient */
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.unique-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Slightly darker overlay */
+}
+
+.unique-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+}
+
+.unique-button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.unique-btn {
+    background-color: #ff7e5f;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.unique-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.unique-btn-register {
+    background-color: #ff6f61;
+}
+
+.unique-btn-register:hover {
+    background-color: #e04f50;
+}
+
+.unique-social-icons {
+    margin-top: 35px;
+}
+
+.unique-icon {
+    color: white;
+    margin: 0 18px;
+    font-size: 1.6rem;
+    transition: color 0.3s ease;
+}
+
+.unique-icon:hover {
+    color: #ff7e5f;
+}
+
+.unique-testimonial {
+    margin-top: 45px;
+    font-style: italic;
+    color: #f1f1f1;
+    text-align: center;
+}
+
+.unique-testimonial blockquote {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0 22px;
+    border-left: 5px solid #ff7e5f;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .unique-btn {
+        padding: 10px 25px;
+    }
+
+    .unique-testimonial blockquote {
+        font-size: 1.1rem;
+    }
+}
