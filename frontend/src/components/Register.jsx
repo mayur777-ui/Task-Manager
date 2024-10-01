@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import '../styles/register.css'; // Ensure you have the styles imported
 
 export default function Register() {
@@ -17,19 +18,22 @@ export default function Register() {
     });
 
     const navigate = useNavigate();
+    const [showAnimation, setShowAnimation] = useState(false);
+
+    useEffect(() => {
+        setShowAnimation(true);
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInput({ ...input, [name]: value });
-
-        // Clear the corresponding error when the user types
-        setErrors({ ...errors, [name]: '' });
+        setErrors({ ...errors, [name]: '' }); // Clear error when typing
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Basic validation before submitting
+        // Basic validation
         let newErrors = { name: '', email: '', password: '' };
         if (!input.name) newErrors.name = 'Username is required!';
         if (!input.email) newErrors.email = 'Email is required!';
@@ -37,22 +41,14 @@ export default function Register() {
 
         setErrors(newErrors);
 
-        // If there are errors, do not submit the form
         if (newErrors.name || newErrors.email || newErrors.password) return;
 
         try {
             const response = await axios.post(`${USER_API_END_POINT}/register`, input, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 withCredentials: true,
             });
-            console.log(response.data);
-            setInput({
-                name: "",
-                email: "",
-                password: "",
-            });
+            setInput({ name: "", email: "", password: "" });
             navigate("/login");
         } catch (error) {
             console.error("Error during registration:", error);
@@ -61,11 +57,27 @@ export default function Register() {
     };
 
     return (
-        <div className="register-container">
-            <div className="register-card">
-                <h2 className="enhanced-title">Register</h2>
+        <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={showAnimation ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="register-container"
+        >
+            <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="register-card"
+            >
+                <h2 className="enhanced-title text-center">Register</h2>
+
                 <form onSubmit={handleSubmit}>
-                    <div className="enhanced-form-group">
+                    <motion.div
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        className="enhanced-form-group"
+                    >
                         <label className="enhanced-label">Username:</label>
                         <input
                             type="text"
@@ -76,8 +88,14 @@ export default function Register() {
                             placeholder="Enter your username"
                         />
                         {errors.name && <div className="error-message">{errors.name}</div>}
-                    </div>
-                    <div className="enhanced-form-group">
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="enhanced-form-group"
+                    >
                         <label className="enhanced-label">Email:</label>
                         <input
                             type="email"
@@ -88,8 +106,14 @@ export default function Register() {
                             placeholder="Enter your email"
                         />
                         {errors.email && <div className="error-message">{errors.email}</div>}
-                    </div>
-                    <div className="enhanced-form-group">
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="enhanced-form-group"
+                    >
                         <label className="enhanced-label">Password:</label>
                         <input
                             type="password"
@@ -100,12 +124,26 @@ export default function Register() {
                             placeholder="Enter your password"
                         />
                         {errors.password && <div className="error-message">{errors.password}</div>}
-                    </div>
-                    <button type="submit" className="enhanced-button">
+                    </motion.div>
+
+                    <motion.button
+                        type="submit"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="enhanced-submit-btn"
+                    >
                         Submit
-                    </button>
+                    </motion.button>
                 </form>
-            </div>
-        </div>
+
+                <p className="text-center">
+                    Already have an account?{' '}
+                    <Link to="/login" className="login-link">
+                        Login
+                    </Link>
+                </p>
+            </motion.div>
+        </motion.div>
     );
 }

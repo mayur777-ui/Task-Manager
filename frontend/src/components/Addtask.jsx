@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Add Framer Motion for animations
-import '../styles/addtask.css'; // Ensure your styles are updated
+import { motion } from 'framer-motion'; 
+import '../styles/addtask.css'; 
 
 export default function Addtask() {
   const USER_API_END_POINT = 'http://localhost:4000/Task';
@@ -51,7 +51,7 @@ export default function Addtask() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
       transition={{ duration: 0.5 }}
-      className="form-container mt-5" // Changed class name
+      className="form-container mt-5"
     >
       <div className="enhanced-card"> {/* New unique class name */}
         <div className="form-body">
