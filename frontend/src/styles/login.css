@@ -107,3 +107,19 @@
 .enhanced-submit-btn:active {
     transform: translateY(2px);
 }
+
+
+.password-input-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff; /* Color of the toggle button */
+}

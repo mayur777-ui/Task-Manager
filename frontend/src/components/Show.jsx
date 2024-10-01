@@ -1,8 +1,9 @@
+// Import dependencies
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import '../styles/show.css';
+import '../styles/show.css'; // Ensure to have styles for the new design
 import { FaPlus, FaEdit, FaTrash, FaSignOutAlt } from 'react-icons/fa';
 
 export default function Show() {
@@ -14,6 +15,12 @@ export default function Show() {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const { id } = useParams();
+    // const [userId, setUserId] = useState('');
+
+    const [userDetails, setUserDetails] = useState({
+        name: "",
+        email: "",
+    });
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -24,6 +31,7 @@ export default function Show() {
                         Authorization: `Bearer ${token}`,
                     },
                 });
+                // setUserId(response.data[0].user);
                 setTask(response.data);
             } catch (err) {
                 console.error("Error fetching tasks:", err.message);
@@ -34,12 +42,30 @@ export default function Show() {
         fetchTasks();
     }, [token, id]);
 
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            if (id) {
+                try {
+                    const response = await axios.get(`http://localhost:4000/User/showDetails/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        },
+                    });
+                    setUserDetails(response.data);
+                } catch (err) {
+                    console.error("Error fetching user details:", err.message);
+                }
+            }
+        };
+        fetchUserDetails();
+    }, [id, token]);
+
     const handleEdit = (id) => {
         navigate(`/editTask/${id}`);
     };
 
     const handleDelete = (id) => {
-        setTaskToDelete(id); 
+        setTaskToDelete(id);
         setShowModal(true);
     };
 
@@ -54,8 +80,8 @@ export default function Show() {
         } catch (err) {
             console.error("Error deleting task:", err.message);
         } finally {
-            setShowModal(false); // Close the modal
-            setTaskToDelete(null); // Reset task to delete
+            setShowModal(false);
+            setTaskToDelete(null);
         }
     };
 
@@ -77,6 +103,13 @@ export default function Show() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
                 <h2 className="task-title">Task List</h2>
+
+                {/* User Info Card */}
+                <div className="user-info-card">
+                    <h3 className="user-name">{userDetails.name}</h3>
+                    <p className="user-email">{userDetails.email}</p>
+                </div>
+
                 <div className="action-buttons">
                     <button className="btn-logout" onClick={handleLogout}>
                         <FaSignOutAlt /> Logout
@@ -86,6 +119,7 @@ export default function Show() {
                     </button>
                 </div>
             </motion.div>
+
             {loading ? (
                 <div className="loading-spinner">
                     <div className="spinner"></div>
@@ -101,7 +135,7 @@ export default function Show() {
                         <motion.div 
                             className="task-card"
                             key={task._id}
-                            whileHover={{ scale: 1.05 }} // Scale on hover
+                            whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
                             <div className="card-content">
@@ -150,3 +184,4 @@ export default function Show() {
         </div>
     );
 }
+

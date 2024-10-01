@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import '../styles/register.css'; // Ensure you have the styles imported
 
 export default function Register() {
+    const [showPassword,setShowPassword] = useState(false);
     const USER_API_END_POINT = "http://localhost:4000/user";
     const [input, setInput] = useState({
         name: "",
@@ -29,17 +30,47 @@ export default function Register() {
         setInput({ ...input, [name]: value });
         setErrors({ ...errors, [name]: '' }); // Clear error when typing
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Basic validation
-        let newErrors = { name: '', email: '', password: '' };
-        if (!input.name) newErrors.name = 'Username is required!';
-        if (!input.email) newErrors.email = 'Email is required!';
-        if (!input.password) newErrors.password = 'Password is required!';
 
+        let newErrors = { name: '', email: '', password: '' ,all: ''};
+
+        if(!input.name && !input.email && !input.password){
+            newErrors.all = 'Please fill all fields!';
+        }
+        if (!input.name){
+             newErrors.name = 'Username is required!';
+             newErrors.all = 'Username is required!';
+        }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!input.email) {
+            newErrors.email = 'Email is required!';
+            newErrors.all = 'Email is required!';
+        } else if (!emailPattern.test(input.email)) {
+            newErrors.email = 'Invalid email format!';
+            newErrors.all = 'Invalid email format!';
+        }
+        if (!input.password) {
+            newErrors.password = 'Password is required!';
+            newErrors.all = 'Password is required!';
+        } else if (input.password.length < 8 || input.password.length > 20) {
+            newErrors.password = 'Password must be between 8 and 20 characters long!';
+            newErrors.all = 'Password must be between 8 and 20 characters long!';
+        } else {
+            // Checking if the password contains the required characters
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+            if (!passwordPattern.test(input.password)) {
+                newErrors.password = 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character!';
+                newErrors.all = 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character!';
+            }
+        }
+        
+        
         setErrors(newErrors);
+
+
 
         if (newErrors.name || newErrors.email || newErrors.password) return;
 
@@ -51,11 +82,16 @@ export default function Register() {
             setInput({ name: "", email: "", password: "" });
             navigate("/login");
         } catch (error) {
-            console.error("Error during registration:", error);
-            setErrors({ ...errors, email: 'Registration failed. Please try again.' });
+            if(error.response && error.response.status == 409){
+                setErrors({ ...errors, all: 'Username or Email already exists!' });
+            }else{
+                setErrors({ ...errors, email: 'Registration failed. Please try again.' });
+            }
         }
     };
-
+    const togglePasswordVisibility = () =>{
+        setShowPassword(!showPassword)
+    }
     return (
         <motion.div
             initial={{ opacity: 0, y: -100 }}
@@ -71,6 +107,16 @@ export default function Register() {
             >
                 <h2 className="enhanced-title text-center">Register</h2>
 
+                {errors.all && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, type: 'spring' }}
+                        className="enhanced-alert"
+                    >
+                        {errors.all}
+                    </motion.div>
+                )}
                 <form onSubmit={handleSubmit}>
                     <motion.div
                         initial={{ opacity: 0, x: -100 }}
@@ -115,14 +161,19 @@ export default function Register() {
                         className="enhanced-form-group"
                     >
                         <label className="enhanced-label">Password:</label>
+                        <div className="register-password-input-group">
                         <input
-                            type="password"
+                            type= {showPassword ? "text" : "password"}
                             name="password"
                             value={input.password}
                             onChange={handleChange}
                             className={`enhanced-input ${errors.password ? 'is-invalid' : ''}`}
                             placeholder="Enter your password"
                         />
+                       <button type="button" className="register-toggle-password" onClick={togglePasswordVisibility}>
+                                {showPassword ? 'Hide' : 'Show'}
+                        </button>
+                        </div>
                         {errors.password && <div className="error-message">{errors.password}</div>}
                     </motion.div>
 

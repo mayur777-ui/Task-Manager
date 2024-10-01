@@ -3,7 +3,7 @@ import Task from '../models/task.js';
 
 export const addTask = async(req,res) =>{
     try{
-        console.log("trying to add");
+        // console.log("trying to add");
     let {title,description} = req.body;
     const userId = req.user.id; 
     const newtask = new Task({

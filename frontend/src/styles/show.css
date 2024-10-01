@@ -1,19 +1,17 @@
-/* Show.css */
-
 body {
-    background: linear-gradient(135deg, #f0f4f8, #d9e8f5); /* Soft gradient background */
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    margin: 0; /* Remove default margin */
+    background: linear-gradient(135deg, #f0f4f8, #d9e8f5);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
 .task-container {
-    max-width: 900px; /* Increased container width for better layout */
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Add padding */
-    border-radius: 20px; /* Rounded corners */
-    backdrop-filter: blur(15px); /* Glassmorphism effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Enhanced shadow for depth */
-    animation: fadeIn 0.5s; /* Fade-in animation for the container */
+    max-width:930px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.5s;
 }
 
 @keyframes fadeIn {
@@ -26,184 +24,185 @@ body {
 }
 
 .task-header {
-    display: flex; /* Flexbox for layout */
-    justify-content: space-between; /* Space between title and buttons */
-    align-items: center; /* Center vertically */
-    margin-bottom: 30px; /* Space below header */
-    padding: 15px; /* Add padding to header */
-    border-radius: 10px; /* Rounded corners for header */
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .task-title {
-    font-size: 2.5rem; /* Title size */
-    color: #333; /* Dark color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .action-buttons {
-    display: flex; /* Flexbox for buttons */
+    display: flex;
 }
 
 .btn-logout, .btn-add, .btn-edit, .btn-delete {
-    padding: 10px 20px; /* Button padding */
-    border: none; /* Remove border */
-    border-radius: 20px; /* Rounded corners for buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    font-weight: bold; /* Bold font for buttons */
-    font-size: 1rem; /* Font size */
-    position: relative; /* Position for animation */
-    display: flex; /* Flexbox for icon and text */
-    align-items: center; /* Center items vertically */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .btn-logout {
-    background: linear-gradient(90deg, #e63946, #f1c40f); /* Logout button gradient */
-    color: white; /* Text color */
-    margin-right: 10px; /* Space between buttons */
+    background: linear-gradient(90deg, #e63946, #f1c40f);
+    color: white;
+    margin-right: 10px;
 }
 
 .btn-add {
-    background: linear-gradient(90deg, #28a745, #6ab04c); /* Add Task button gradient */
-    color: white; /* Text color */
+    background: linear-gradient(90deg, #28a745, #6ab04c);
+    color: white;
 }
 
 .btn-logout:hover, .btn-add:hover {
-    transform: translateY(-3px); /* Slight lift on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .task-list {
-    display: grid; /* Grid layout for tasks */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between task cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .task-card {
-    background: rgba(255, 255, 255, 0.95); /* Task card background */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Shadow for depth */
-    padding: 20px; /* Card padding */
-    transition: transform 0.3s; /* Smooth transformation */
-    overflow: hidden; /* Prevent overflow */
-    position: relative; /* Position for flipping */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    position: relative;
 }
 
 .card-content {
-    text-align: center; /* Center text in cards */
+    text-align: center;
 }
 
 .card-title {
-    font-size: 1.5rem; /* Title size */
-    margin-bottom: 10px; /* Space below title */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .card-description {
-    font-size: 1rem; /* Description size */
-    color: #555; /* Muted color */
-    margin-bottom: 15px; /* Space below description */
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
 }
 
 .card-buttons {
-    display: flex; /* Flexbox for buttons */
-    justify-content: center; /* Center buttons */
-    gap: 10px; /* Space between buttons */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .btn-edit {
-    background: linear-gradient(90deg, #007bff, #1e90ff); /* Edit button gradient */
-    color: white; /* Text color */
+    background: linear-gradient(90deg, #007bff, #1e90ff);
+    color: white;
 }
 
 .btn-delete {
-    background: linear-gradient(90deg, #dc3545, #ff6b81); /* Delete button gradient */
-    color: white; /* Text color */
+    background: linear-gradient(90deg, #dc3545, #ff6b81);
+    color: white;
 }
 
 .btn-edit:hover, .btn-delete:hover {
-    transform: scale(1.1); /* Slight scale on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .no-tasks {
-    text-align: center; /* Center the no tasks message */
-    margin-top: 20px; /* Space above no tasks message */
-    color: #666; /* Muted color */
-    font-size: 1.5rem; /* Slightly larger font for emphasis */
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 1.5rem;
 }
 
 .loading-spinner {
-    display: flex; /* Flexbox for centering spinner */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
 
 .spinner {
-    border: 8px solid rgba(0, 0, 0, 0.1); /* Light border */
-    border-left-color: #007bff; /* Color for the spinner */
-    border-radius: 50%; /* Circular spinner */
-    width: 40px; /* Spinner width */
-    height: 40px; /* Spinner height */
-    animation: spin 1s linear infinite; /* Spinner animation */
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
     to {
-        transform: rotate(360deg); /* Full rotation */
+        transform: rotate(360deg);
     }
 }
 
-/* Modal styles */
+
 .modal-overlay {
-    position: fixed; /* Fixed position for modal */
-    top: 0; /* Cover entire screen */
-    left: 0; /* Cover entire screen */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    display: flex; /* Flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    z-index: 1000; /* Above other content */
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
 }
 
 .modal-content {
-    background: white; /* Modal background */
-    padding: 20px; /* Modal padding */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25); /* Shadow for depth */
-    text-align: center; /* Center text */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
 }
 
 .modal-buttons {
-    display: flex; /* Flexbox for buttons */
-    justify-content: center; /* Center buttons */
-    gap: 20px; /* Space between buttons */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .btn-confirm {
-    background: #28a745; /* Confirm button color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded corners */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor */
+    background: #28a745;
+    color: white;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    border: none; 
+    cursor: pointer; 
 }
 
 .btn-confirm:hover {
-    background: #218838; /* Darker shade on hover */
+    background: #218838; 
 }
 
 .btn-cancel {
-    background: #dc3545; /* Cancel button color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded corners */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor */
+    background: #dc3545; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
 }
 
 .footer {
@@ -230,6 +229,28 @@ body {
     }
 }
 
+
+.user-info-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-email {
+    font-size: 1rem;
+    color: #555;
+}
+
 .btn-cancel:hover {
-    background: #c82333; /* Darker shade on hover */
+    background: #c82333;
 }

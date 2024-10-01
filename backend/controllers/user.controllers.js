@@ -11,7 +11,7 @@ export const Register = async(req,res)=>{
 
         const exitUser = await USER.findOne({ email: email });
         if (exitUser) {
-            return res.status(400).json({ message: "Email already exists" });
+            return res.status(409).json({ message: "Email already exists" });
         }
         const salt = await bcrypt.genSalt(10);
         const hashpassword = await bcrypt.hash(password,salt);
@@ -43,11 +43,11 @@ export const login = async(req,res)=>{
 
         const existUser = await USER.findOne({ email: email });
         if (!existUser) {
-            return res.status(400).json({ message: "Email not exists" });
+            return res.status(404).json({ message: "Email not exists" });
         }
         const isMatch = await bcrypt.compare(password,existUser.password);
         if(!isMatch){
-            return res.status(400).json({message: "wrong password entered"});
+            return res.status(401).json({message: "wrong password entered"});
         }
 
         const token = jwt.sign({email:existUser,id: existUser._id},process.env.JWT_SECRET,{expiresIn:'1h'});
@@ -63,6 +63,8 @@ export const login = async(req,res)=>{
     }
 }
 
-// export const showname = async(req,res)=>{
-//     const {id} = req.params
-// }
+export const Userdetails = async(req,res)=>{
+    const{id} = req.params;
+    const {name,email} = await USER.findById(id);
+    res.status(200).json({name,email});
+}

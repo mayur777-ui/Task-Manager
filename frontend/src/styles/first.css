@@ -3,119 +3,175 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.unique-first-container {
+.futuristic-first-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #8e2de2, #4a00e0); /* A fresh purple gradient */
+    background: radial-gradient(circle, rgb(108, 199, 207) 0%, rgb(136, 0, 255) 70%); /* Eye-catching gradient */
     color: white;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
-.unique-overlay {
+.futuristic-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Slightly darker overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
 }
 
-.unique-content {
+.futuristic-content {
     position: relative;
     text-align: center;
     z-index: 1;
-    color: #fff;
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 20px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 0 20px rgba(0, 255, 193, 0.8), 0 0 40px rgba(0, 193, 255, 0.6); /* Glowing effect */
 }
 
-p {
-    font-size: 1.3rem;
+.futuristic-description {
+    font-size: 1.5rem;
     margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(0, 255, 193, 0.6);
 }
 
-.unique-button-group {
+.futuristic-button-group {
     display: flex;
     justify-content: center;
 }
 
-.unique-btn {
-    background-color: #ff7e5f;
+.futuristic-btn {
+    background: linear-gradient(90deg, #ff0080, #ff8c00); /* Gradient for futuristic buttons */
     border: none;
-    border-radius: 50px;
+    border-radius: 30px;
     color: white;
-    padding: 12px 35px;
-    font-size: 1.1rem;
+    padding: 15px 40px;
+    font-size: 1.2rem;
     cursor: pointer;
     margin: 0 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
 }
 
-.unique-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+.futuristic-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
-.unique-btn-register {
-    background-color: #ff6f61;
+.futuristic-btn:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s ease;
+    z-index: 0;
 }
 
-.unique-btn-register:hover {
-    background-color: #e04f50;
+.futuristic-btn:hover:before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.unique-social-icons {
+.futuristic-social-icons {
     margin-top: 35px;
 }
 
-.unique-icon {
+.futuristic-icon {
     color: white;
     margin: 0 18px;
-    font-size: 1.6rem;
+    font-size: 2rem;
     transition: color 0.3s ease;
 }
 
-.unique-icon:hover {
-    color: #ff7e5f;
+.futuristic-icon:hover {
+    color: #ff0080;
+    font-size: 2.3rem;
 }
 
-.unique-testimonial {
+.futuristic-testimonial {
     margin-top: 45px;
     font-style: italic;
     color: #f1f1f1;
     text-align: center;
 }
 
-.unique-testimonial blockquote {
+.futuristic-testimonial blockquote {
     font-size: 1.3rem;
     margin: 0;
     padding: 0 22px;
-    border-left: 5px solid #ff7e5f;
+    border-left: 5px solid #ff0080;
+}
+
+/* Background Blobs */
+.futuristic-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.background-blob {
+    position: absolute;
+    background: rgba(0, 234, 255, 0.2);
+    border-radius: 50%;
+    animation: blob 10s infinite alternate;
+}
+
+.background-blob:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    left: 20%;
+}
+
+.background-blob:nth-child(2) {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 60%;
+}
+
+/* Blob Animation */
+@keyframes blob {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.3rem;
+        font-size: 2.5rem;
     }
 
-    p {
-        font-size: 1.1rem;
+    .futuristic-description {
+        font-size: 1.2rem;
     }
 
-    .unique-btn {
-        padding: 10px 25px;
+    .futuristic-btn {
+        padding: 10px 30px;
     }
 
-    .unique-testimonial blockquote {
+    .futuristic-testimonial blockquote {
         font-size: 1.1rem;
     }
 }
