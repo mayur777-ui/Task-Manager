@@ -102,7 +102,7 @@ export default function Show() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
-                <h2 className="task-title">Task List</h2>
+                {/* <h2 className="task-title">Task List</h2> */}
 
                 {/* User Info Card */}
                 <div className="user-info-card">
@@ -162,7 +162,7 @@ export default function Show() {
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <h3>Are you sure you want to delete this task?</h3>
+                        <h3 className='model-text'>Are you sure you want to delete this task?</h3>
                         <div className="modal-buttons">
                             <button className="btn-confirm" onClick={confirmDelete}>Yes</button>
                             <button className="btn-cancel" onClick={() => setShowModal(false)}>No</button>
