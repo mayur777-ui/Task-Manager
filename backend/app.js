@@ -10,7 +10,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'http://localhost:5173', 
+    origin: 'https://task-manager-1-9lkd.onrender.com', 
     credentials: true, 
 };
 
