@@ -11,7 +11,7 @@ export default function Show() {
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [taskToDelete, setTaskToDelete] = useState(null);
-    const USER_API_END_POINT = 'http://localhost:4000/Task';
+    const USER_API_END_POINT = 'https://task-manager-dpl5.onrender.com/Task';
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const { id } = useParams();
@@ -46,7 +46,7 @@ export default function Show() {
         const fetchUserDetails = async () => {
             if (id) {
                 try {
-                    const response = await axios.get(`http://localhost:4000/User/showDetails/${id}`, {
+                    const response = await axios.get(`https://task-manager-dpl5.onrender.com/User/showDetails/${id}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         },
