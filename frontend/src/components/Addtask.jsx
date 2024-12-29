@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import '../styles/addtask.css'; 
 
 export default function Addtask() {
-  const USER_API_END_POINT = 'http://localhost:4000/Task';
+  const USER_API_END_POINT = 'https://task-manager-dpl5.onrender.com/Task';
   const navigate = useNavigate();
   const [input, setInput] = useState({
     title: "",
