@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/editTask.css';
 
 export default function EditTask() {
-    const USER_API_END_POINT = 'http://localhost:4000/Task';
+    const USER_API_END_POINT = 'https://task-manager-dpl5.onrender.com/Task';
     const navigate = useNavigate();
     const { id } = useParams();
     const [input, setInput] = useState({
