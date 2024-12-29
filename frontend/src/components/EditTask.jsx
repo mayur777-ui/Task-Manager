@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../styles/editTask.css';
+import '../styles/edittask.css';
 
 export default function EditTask() {
     const USER_API_END_POINT = 'https://task-manager-dpl5.onrender.com/Task';
