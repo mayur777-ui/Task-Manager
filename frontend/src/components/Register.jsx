@@ -6,7 +6,7 @@ import '../styles/register.css'; // Ensure you have the styles imported
 
 export default function Register() {
     const [showPassword,setShowPassword] = useState(false);
-    const USER_API_END_POINT = "https://task-manager-dpl5.onrender.com/user";
+    const USER_API_END_POINT = "https://task-manager-dpl5.onrender.com/User";
     const [input, setInput] = useState({
         name: "",
         email: "",
