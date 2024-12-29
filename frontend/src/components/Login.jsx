@@ -13,7 +13,7 @@ export default function Login() {
     const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
     // Constants
-    const USER_API_END_POINT = "https://task-manager-dpl5.onrender.com/user";
+    const USER_API_END_POINT = "https://task-manager-dpl5.onrender.com/User";
     const navigate = useNavigate();
 
     // Handle form input changes
