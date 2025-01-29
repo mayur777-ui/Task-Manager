@@ -101,7 +101,9 @@ npm start
     </ul>
     <hr>
     <hr>
-
+    <div align='center'>
+        Made with ❤️ by Mayur
+    </div>
   
 
 </body>
